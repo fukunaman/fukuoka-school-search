@@ -6,6 +6,9 @@ export default defineConfig({
   
   root: '.',
   
+  // publicディレクトリ設定
+  publicDir: 'public',
+  
   // ビルド設定
   build: {
     outDir: 'dist',
