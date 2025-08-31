@@ -58,6 +58,16 @@ header p {
     font-size: 1.2rem;
     font-weight: 400;
 }
+.disclaimer {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-top: 8px;
+    padding: 8px 16px;
+    background: rgba(243, 244, 246, 0.5);
+    border-radius: 6px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+}
 .search-section {
     margin-bottom: 40px;
     padding: 30px;
