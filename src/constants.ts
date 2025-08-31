@@ -39,7 +39,7 @@ export const HTML_TEMPLATES = {
 export const APP_CONFIG = {
   maxSuggestions: 10,
   suggestionHideDelay: 200,
-  scrollBehavior: 'smooth' as ScrollBehavior,
+  scrollBehavior: 'smooth' as const,
   defaultHighSchoolDistrict: '情報なし',
 } as const;
 // プレースホルダーテキスト

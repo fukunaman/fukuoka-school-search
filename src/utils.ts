@@ -65,14 +65,14 @@ export class DOMUtils {
    */
   private static createDistrictHTML(district: string): string {
     switch (district) {
-      case '第４学区':
-        return `第<span class="district-4">４</span>学区`;
-      case '第５学区':
-        return `第<span class="district-5">５</span>学区`;
-      case '第６学区':
-        return `第<span class="district-6">６</span>学区`;
-      default:
-        return this.escapeHtml(district);
+    case '第４学区':
+      return '第<span class="district-4">４</span>学区';
+    case '第５学区':
+      return '第<span class="district-5">５</span>学区';
+    case '第６学区':
+      return '第<span class="district-6">６</span>学区';
+    default:
+      return this.escapeHtml(district);
     }
   }
   
