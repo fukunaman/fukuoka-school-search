@@ -50,7 +50,7 @@ export class DOMUtils {
    */
   private static createTableRow(area: AreaData, townClickable: boolean = true): string {
     const highSchoolDistrict = area.highSchoolDistrict || APP_CONFIG.defaultHighSchoolDistrict;
-    
+
     return `<tr>
             <td>${this.escapeHtml(area.ward)}</td>
             <td>${this.createTownCell(area.ward, area.town, townClickable)}</td>
@@ -75,7 +75,7 @@ export class DOMUtils {
       return this.escapeHtml(district);
     }
   }
-  
+
   /**
    * 町名セルを作成
    */

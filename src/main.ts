@@ -72,17 +72,17 @@ function handleSearchParams(): void {
   const searchTerm = urlParams.get('q');
   const schoolSearchTerm = urlParams.get('school');
   const autoSelect = urlParams.get('auto') !== 'false'; // auto=false以外は自動選択（デフォルトtrue）
-  
+
   if (searchTerm && searchTerm.trim()) {
     const elements = appState.getElements();
     elements.addressText.value = searchTerm.trim();
-    
+
     // 少し遅延させて検索を実行（初期化完了を確実にする）
     setTimeout(() => {
       // inputイベントをトリガーして検索実行
       const event = new Event('input', { bubbles: true });
       elements.addressText.dispatchEvent(event);
-      
+
       // 自動選択が有効な場合、最初の候補をクリック
       if (autoSelect) {
         // 候補が表示されるまで待機
@@ -93,7 +93,7 @@ function handleSearchParams(): void {
             (firstSuggestion as HTMLElement).click();
           }
         }, 100);
-        
+
         // 最大2秒待機
         setTimeout(() => {
           clearInterval(waitForSuggestion);
@@ -103,19 +103,19 @@ function handleSearchParams(): void {
   } else if (schoolSearchTerm && schoolSearchTerm.trim()) {
     const elements = appState.getElements();
     elements.schoolSearchText.value = schoolSearchTerm.trim();
-    
+
     // 学校検索セクションまでスクロール
     const schoolSection = document.getElementById('reverse-search');
     if (schoolSection) {
       schoolSection.scrollIntoView({ behavior: 'smooth' });
     }
-    
+
     // 少し遅延させて検索を実行
     setTimeout(() => {
       // inputイベントをトリガーして検索実行
       const event = new Event('input', { bubbles: true });
       elements.schoolSearchText.dispatchEvent(event);
-      
+
       // 自動選択が有効な場合、最初の候補をクリック
       if (autoSelect) {
         // 候補が表示されるまで待機
@@ -126,7 +126,7 @@ function handleSearchParams(): void {
             (firstSuggestion as HTMLElement).click();
           }
         }, 100);
-        
+
         // 最大2秒待機
         setTimeout(() => {
           clearInterval(waitForSuggestion);
@@ -155,9 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupEventListeners();
   DisplayManager.hideAll(appState);
-  
+
   // URL検索パラメータの処理
   handleSearchParams();
-  
+
   appState.getElements().addressText.focus();
 });

@@ -3363,9 +3363,7 @@ export function getAllSchools(): Array<{ name: string; type: 'elementary' | 'mid
   });
   return schoolList.sort((a, b) => a.name.localeCompare(b.name, 'ja'));
 }
-export function searchSchoolAreas(
-  schoolName: string
-): Array<{
+export function searchSchoolAreas(schoolName: string): Array<{
   ward: string;
   town: string;
   chome: string;

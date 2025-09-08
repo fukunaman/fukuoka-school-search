@@ -2,7 +2,6 @@ import type { TownSuggestion, SchoolSuggestion } from '../types';
 import { StateManager } from '../state';
 import { SearchUtils, NavigationUtils } from '../utils';
 import { DisplayManager } from './displayManager';
-import { SchoolSearchManager } from './schoolSearchManager';
 
 abstract class BaseSuggestionsManager<T> {
   constructor(protected appState: StateManager) {}
@@ -165,8 +164,9 @@ export class SchoolSuggestionsManager extends BaseSuggestionsManager<SchoolSugge
     return `${suggestion.name} <span class="school-type">(${typeLabel})</span>`;
   }
 
-  selectSuggestion(suggestion: SchoolSuggestion): void {
+  async selectSuggestion(suggestion: SchoolSuggestion): Promise<void> {
     this.hide();
+    const { SchoolSearchManager } = await import('./schoolSearchManager');
     SchoolSearchManager.performSearch(this.appState, suggestion.name);
     this.appState.getElements().schoolSearchText.value = '';
   }
