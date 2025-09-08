@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fukuoka-school-search.pages.github.io/sitemap.xml
+Sitemap: https://fukunaman.github.io/fukuoka-school-search/sitemap.xml
