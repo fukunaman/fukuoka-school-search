@@ -17,6 +17,21 @@
 
 [https://fukunaman.github.io/fukuoka-school-search/](https://fukunaman.github.io/fukuoka-school-search/)
 
+## 📌 URLパラメータによる検索
+
+直接URLで検索を実行できます：
+
+```
+# 住所から検索（自動実行）
+https://fukunaman.github.io/fukuoka-school-search/?q=天神
+
+# 学校名から検索（自動実行）  
+https://fukunaman.github.io/fukuoka-school-search/?school=百道浜小
+
+# 検索のみ（手動選択）
+https://fukunaman.github.io/fukuoka-school-search/?q=博多&auto=false
+```
+
 ## 🛠️ 技術スタック
 
 - **フロントエンド**: TypeScript, HTML5, CSS3

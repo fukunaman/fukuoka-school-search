@@ -16,9 +16,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="福岡校区検索">
     <link rel="canonical" href="https://fukunaman.github.io/fukuoka-school-search/">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.ico">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" href="./favicon.ico">
+    <link rel="manifest" href="./site.webmanifest">
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
@@ -115,19 +115,36 @@
         "serviceType": "教育情報サービス",
         "priceRange": "無料"
       },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://fukunaman.github.io/fukuoka-school-search/?q={search_term_string}",
-          "actionPlatform": [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/IOSPlatform",
-            "http://schema.org/AndroidPlatform"
-          ]
+      "potentialAction": [
+        {
+          "@type": "SearchAction",
+          "name": "住所から学校を検索",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://fukunaman.github.io/fukuoka-school-search/?q={search_term_string}",
+            "actionPlatform": [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/IOSPlatform",
+              "http://schema.org/AndroidPlatform"
+            ]
+          },
+          "query-input": "required name=search_term_string"
         },
-        "query-input": "required name=search_term_string"
-      },
+        {
+          "@type": "SearchAction",
+          "name": "学校名から住所を検索",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://fukunaman.github.io/fukuoka-school-search/?school={school_name}",
+            "actionPlatform": [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/IOSPlatform",
+              "http://schema.org/AndroidPlatform"
+            ]
+          },
+          "query-input": "required name=school_name"
+        }
+      ],
       "mainEntity": {
         "@type": "FAQPage",
         "mainEntity": [
@@ -153,7 +170,7 @@
     }
     </script>
 
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Y8EYLP7SQ"></script>
@@ -248,6 +265,6 @@
         </footer>
     </div>
 
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="./src/main.ts"></script>
 </body>
 </html>

@@ -70,6 +70,8 @@ function setupEventListeners(): void {
 function handleSearchParams(): void {
   const urlParams = new URLSearchParams(window.location.search);
   const searchTerm = urlParams.get('q');
+  const schoolSearchTerm = urlParams.get('school');
+  const autoSelect = urlParams.get('auto') !== 'false'; // auto=false以外は自動選択（デフォルトtrue）
   
   if (searchTerm && searchTerm.trim()) {
     const elements = appState.getElements();
@@ -80,7 +82,57 @@ function handleSearchParams(): void {
       // inputイベントをトリガーして検索実行
       const event = new Event('input', { bubbles: true });
       elements.addressText.dispatchEvent(event);
+      
+      // 自動選択が有効な場合、最初の候補をクリック
+      if (autoSelect) {
+        // 候補が表示されるまで待機
+        const waitForSuggestion = setInterval(() => {
+          const firstSuggestion = document.querySelector('.suggestion-item');
+          if (firstSuggestion) {
+            clearInterval(waitForSuggestion);
+            (firstSuggestion as HTMLElement).click();
+          }
+        }, 100);
+        
+        // 最大2秒待機
+        setTimeout(() => {
+          clearInterval(waitForSuggestion);
+        }, 2000);
+      }
     }, 200);
+  } else if (schoolSearchTerm && schoolSearchTerm.trim()) {
+    const elements = appState.getElements();
+    elements.schoolSearchText.value = schoolSearchTerm.trim();
+    
+    // 学校検索セクションまでスクロール
+    const schoolSection = document.getElementById('reverse-search');
+    if (schoolSection) {
+      schoolSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // 少し遅延させて検索を実行
+    setTimeout(() => {
+      // inputイベントをトリガーして検索実行
+      const event = new Event('input', { bubbles: true });
+      elements.schoolSearchText.dispatchEvent(event);
+      
+      // 自動選択が有効な場合、最初の候補をクリック
+      if (autoSelect) {
+        // 候補が表示されるまで待機
+        const waitForSuggestion = setInterval(() => {
+          const firstSuggestion = document.querySelector('#school-suggestions .suggestion-item');
+          if (firstSuggestion) {
+            clearInterval(waitForSuggestion);
+            (firstSuggestion as HTMLElement).click();
+          }
+        }, 100);
+        
+        // 最大2秒待機
+        setTimeout(() => {
+          clearInterval(waitForSuggestion);
+        }, 2000);
+      }
+    }, 300);
   }
 }
 
