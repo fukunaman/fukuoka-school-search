@@ -23,7 +23,7 @@ pnpm run test:run  # テスト
 ```
 
 ## 注意事項
-参考情報です。正確な情報は福岡市教育委員会にお問い合わせください。
+参考情報です。正確な情報は福岡市にお問い合わせください。
 
 ## 作成者
 **ふくなまん** - [X](https://x.com/fukunaman) / [note](http://note.com/fukunaman)
