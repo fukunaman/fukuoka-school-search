@@ -64,6 +64,27 @@ function setupEventListeners(): void {
 }
 
 // =============================================================================
+// URL検索パラメータ処理
+// =============================================================================
+
+function handleSearchParams(): void {
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchTerm = urlParams.get('q');
+  
+  if (searchTerm && searchTerm.trim()) {
+    const elements = appState.getElements();
+    elements.addressText.value = searchTerm.trim();
+    
+    // 少し遅延させて検索を実行（初期化完了を確実にする）
+    setTimeout(() => {
+      // inputイベントをトリガーして検索実行
+      const event = new Event('input', { bubbles: true });
+      elements.addressText.dispatchEvent(event);
+    }, 200);
+  }
+}
+
+// =============================================================================
 // アプリケーション初期化
 // =============================================================================
 
@@ -82,5 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupEventListeners();
   DisplayManager.hideAll(appState);
+  
+  // URL検索パラメータの処理
+  handleSearchParams();
+  
   appState.getElements().addressText.focus();
 });

@@ -2,12 +2,14 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>福岡市 小学校・中学校校区・高校学区検索 | 住所から校区・学区を検索</title>
     <meta name="description" content="福岡市の住所から通学する小学校・中学校・高校学区を簡単検索。585件の詳細区域データで番地レベルまで正確判定。転校・引越し・入学準備に最適な無料ツール。">
     <meta name="keywords" content="福岡市,校区検索,学区検索,小学校,中学校,高校,通学区域,住所検索,入学,転校,引越し,学校選び,教育,区域判定,無料,ツール">
     <meta name="author" content="ふくなまん">
     <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#3b82f6">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,7 +17,10 @@
     <meta name="apple-mobile-web-app-title" content="福岡校区検索">
     <link rel="canonical" href="https://fukunaman.github.io/fukuoka-school-search/">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.ico">
     <link rel="manifest" href="/site.webmanifest">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -80,8 +85,8 @@
         "@type": "Person",
         "name": "ふくなまん"
       },
-      "dateCreated": "2025",
-      "dateModified": "2025",
+      "dateCreated": "2025-08-31",
+      "dateModified": "2025-08-31",
       "inLanguage": "ja-JP",
       "isAccessibleForFree": true,
       "keywords": "福岡市,小学校,中学校,高校,通学区域,学校区域,校区,学区,住所検索,入学,転校,引越し,教育",
@@ -109,6 +114,41 @@
         },
         "serviceType": "教育情報サービス",
         "priceRange": "無料"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://fukunaman.github.io/fukuoka-school-search/?q={search_term_string}",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/IOSPlatform",
+            "http://schema.org/AndroidPlatform"
+          ]
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "福岡市の住所から校区を調べる方法は？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "町名を入力するか、区→町名→丁目の順に選択して検索できます。585件の詳細区域データで番地レベルまで正確に判定します。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "小学校名から住所を逆引き検索できますか？",
+            "@id": "https://fukunaman.github.io/fukuoka-school-search/#reverse-search",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "はい。小学校・中学校名から該当する住所区域を検索できる逆引き機能があります。"
+            }
+          }
+        ]
       }
     }
     </script>
@@ -191,7 +231,7 @@
             </div>
         </main>
 
-        <div class="school-search-section">
+        <div class="school-search-section" id="reverse-search">
             <h2>小学校・中学校名から検索</h2>
             <div class="school-search-form">
                 <input type="text" id="school-search-text" placeholder="小学校・中学校名を入力（例：百道浜小、高取中）" autocomplete="off">
