@@ -63,6 +63,17 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Debug - List dist contents
+        run: |
+          echo "=== dist directory structure ==="
+          ls -la dist/
+          echo "=== school directory contents ==="
+          ls -la dist/school/ | head -10
+          echo "=== Check specific school ==="
+          ls -la "dist/school/%E4%B8%83%E9%9A%88%E5%B0%8F/" || echo "Not found"
+          echo "=== Verify .nojekyll ==="
+          ls -la dist/.nojekyll || echo ".nojekyll not found"
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
