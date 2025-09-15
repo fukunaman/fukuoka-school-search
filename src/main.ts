@@ -68,9 +68,13 @@ function setupEventListeners(): void {
 // =============================================================================
 
 function handleSearchParams(): void {
+  // 静的ページからのプリロードデータをチェック
+  const preloadedSchool = (window as any).__PRELOADED_SCHOOL__;
+  const preloadedArea = (window as any).__PRELOADED_AREA__;
+  
   const urlParams = new URLSearchParams(window.location.search);
-  const searchTerm = urlParams.get('q');
-  const schoolSearchTerm = urlParams.get('school');
+  const searchTerm = preloadedArea || urlParams.get('q');
+  const schoolSearchTerm = preloadedSchool || urlParams.get('school');
   const autoSelect = urlParams.get('auto') !== 'false'; // auto=false以外は自動選択（デフォルトtrue）
 
   if (searchTerm && searchTerm.trim()) {

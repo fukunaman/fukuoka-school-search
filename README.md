@@ -12,6 +12,7 @@
 
 ## 技術スタック
 - TypeScript, Vite, Vitest, pnpm
+- 静的サイト生成（SSG）対応
 - クラスベース設計、モジュール分離
 
 ## 開発

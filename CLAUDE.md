@@ -4,6 +4,7 @@
 
 ## 技術スタック
 - TypeScript（strict mode）、Vite、Vitest、pnpm
+- 静的サイト生成（SSG）: 609個の静的ページ自動生成
 - クラスベース設計、モジュール分離
 - 585区域・74中学校区対応
 
