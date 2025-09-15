@@ -147,3 +147,11 @@ if (fs.existsSync(publicPath404)) {
   fs.copyFileSync(publicPath404, distPath404);
   console.log('✅ 404.html copied to dist');
 }
+
+// .nojekyllをdistにコピー (GitHub Pagesのため)
+const nojekyllPath = path.join(__dirname, '.nojekyll');
+const distNojekyll = path.join(__dirname, 'dist', '.nojekyll');
+if (fs.existsSync(nojekyllPath)) {
+  fs.copyFileSync(nojekyllPath, distNojekyll);
+  console.log('✅ .nojekyll copied to dist');
+}
