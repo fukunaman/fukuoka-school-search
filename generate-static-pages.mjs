@@ -138,3 +138,12 @@ function generateSitemap() {
 
 generateStaticPages();
 generateSitemap();
+
+// 404.htmlをpublicからdistにコピー (Viteでコピーされないので手動)
+const publicPath404 = path.join(__dirname, 'public', '404.html');
+const distPath404 = path.join(__dirname, 'dist', '404.html');
+
+if (fs.existsSync(publicPath404)) {
+  fs.copyFileSync(publicPath404, distPath404);
+  console.log('✅ 404.html copied to dist');
+}

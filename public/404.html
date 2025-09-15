@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        // GitHub Pages SPAルーティングのハック
+        var pathSegments = location.pathname.split('/').filter(function(segment) {
+            return segment;
+        });
+        
+        // /fukuoka-school-search/school/学校名/ の場合
+        if (pathSegments.length === 3 && pathSegments[1] === 'school') {
+            var school = decodeURIComponent(pathSegments[2]);
+            location.replace(location.origin + '/fukuoka-school-search/?school=' + encodeURIComponent(school));
+        }
+        // /fukuoka-school-search/area/エリア名/ の場合  
+        else if (pathSegments.length === 3 && pathSegments[1] === 'area') {
+            var area = decodeURIComponent(pathSegments[2]);
+            location.replace(location.origin + '/fukuoka-school-search/?q=' + encodeURIComponent(area));
+        }
+        // その他の場合はメインページへ
+        else {
+            location.replace(location.origin + '/fukuoka-school-search/');
+        }
+    </script>
+</head>
+<body>
+    <p>リダイレクト中...</p>
+</body>
+</html>
