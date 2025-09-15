@@ -15,7 +15,7 @@ permissions:
 # 同時実行の制御
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   # ビルドジョブ
@@ -65,14 +65,11 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        with:
-          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-          retention-days: 1
 
   # デプロイジョブ（mainブランチのみ）
   deploy:
