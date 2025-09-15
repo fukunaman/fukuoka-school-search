@@ -50,8 +50,13 @@ function generateStaticPages() {
   
   const indexHtml = fs.readFileSync(indexPath, 'utf-8');
   
-  // 学校ページ生成
-  schools.forEach(school => {
+  // 静的ページ生成を制限（GitHub Pages artifact制限のため）
+  const maxPages = 50; // 制限数
+  const selectedSchools = schools.slice(0, Math.min(maxPages, schools.length));
+  const selectedAreas = areas.slice(0, Math.min(maxPages, areas.length));
+  
+  // 学校ページ生成（制限あり）
+  selectedSchools.forEach(school => {
     const schoolDir = path.join(distPath, 'school', encodeURIComponent(school));
     fs.mkdirSync(schoolDir, { recursive: true });
     
@@ -70,8 +75,8 @@ function generateStaticPages() {
     fs.writeFileSync(path.join(schoolDir, 'index.html'), schoolHtml);
   });
   
-  // エリアページ生成
-  areas.forEach(area => {
+  // エリアページ生成（制限あり）
+  selectedAreas.forEach(area => {
     const areaDir = path.join(distPath, 'area', encodeURIComponent(area));
     fs.mkdirSync(areaDir, { recursive: true });
     
@@ -89,12 +94,15 @@ function generateStaticPages() {
     fs.writeFileSync(path.join(areaDir, 'index.html'), areaHtml);
   });
   
-  console.log(`✅ Generated ${schools.length} school pages and ${areas.length} area pages`);
+  console.log(`✅ Generated ${selectedSchools.length}/${schools.length} school pages and ${selectedAreas.length}/${areas.length} area pages (GitHub Pages制限対応)`);
 }
 
 // sitemapも更新
 function generateSitemap() {
   const { schools, areas } = parseCSV();
+  const maxPages = 50; // 制限数
+  const selectedSchools = schools.slice(0, Math.min(maxPages, schools.length));
+  const selectedAreas = areas.slice(0, Math.min(maxPages, areas.length));
   const hostname = 'https://fukunaman.github.io/fukuoka-school-search';
   const today = new Date().toISOString().split('T')[0];
   
@@ -107,8 +115,8 @@ function generateSitemap() {
         <priority>1.0</priority>
     </url>`;
   
-  // 学校ページ
-  schools.forEach(school => {
+  // 学校ページ（制限あり）
+  selectedSchools.forEach(school => {
     xml += `
     <url>
         <loc>${hostname}/school/${encodeURIComponent(school)}/</loc>
@@ -118,8 +126,8 @@ function generateSitemap() {
     </url>`;
   });
   
-  // エリアページ
-  areas.forEach(area => {
+  // エリアページ（制限あり）
+  selectedAreas.forEach(area => {
     xml += `
     <url>
         <loc>${hostname}/area/${encodeURIComponent(area)}/</loc>
@@ -133,7 +141,7 @@ function generateSitemap() {
   
   const distPath = path.join(__dirname, 'dist');
   fs.writeFileSync(path.join(distPath, 'sitemap.xml'), xml);
-  console.log(`✅ Sitemap generated with ${schools.length} schools and ${areas.length} areas`);
+  console.log(`✅ Sitemap generated with ${selectedSchools.length}/${schools.length} schools and ${selectedAreas.length}/${areas.length} areas`);
 }
 
 generateStaticPages();
