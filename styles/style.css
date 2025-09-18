@@ -450,6 +450,84 @@ footer {
     outline: 2px solid #3b82f6;
     outline-offset: 1px;
 }
+
+/* サイトマップページのスタイル */
+.sitemap-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.sitemap-section h2 {
+    font-size: 2rem;
+    color: #1f2937;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.sitemap-category {
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sitemap-category h3 {
+    font-size: 1.5rem;
+    color: #374151;
+    margin-bottom: 20px;
+    font-weight: 600;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 10px;
+}
+
+.sitemap-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    line-height: 1.6;
+}
+
+.sitemap-link {
+    display: inline-block;
+    padding: 8px 12px;
+    color: #374151;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.sitemap-link:hover,
+.sitemap-link:focus {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1f2937;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .sitemap-links {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 8px;
+    }
+    
+    .sitemap-link {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .sitemap-category {
+        padding: 20px;
+    }
+}
 /* 町名リンクのスタイル */
 .town-link {
     cursor: pointer;

@@ -92,6 +92,49 @@ function generateStaticPages() {
   });
   
   console.log(`✅ Generated ${schools.length} school pages and ${areas.length} area pages`);
+  
+  // サイトマップページ生成
+  generateSitemapPage(schools, areas, distPath, indexHtml);
+}
+
+function generateSitemapPage(schools, areas, distPath, indexHtml) {
+  const sitemapHtml = indexHtml
+    .replace('<title>福岡市 小学校・中学校校区・高校学区検索 | 住所から校区・学区を検索</title>', 
+             'サイトマップ - 福岡市学校区域検索')
+    .replace(/src="\/fukuoka-school-search\//g, 'src="../')
+    .replace(/href="\/fukuoka-school-search\//g, 'href="../')
+    .replace(/<main>[\s\S]*?<\/main>/, `
+        <main>
+            <div class="sitemap-section">
+                <h2>サイトマップ</h2>
+                
+                <div class="sitemap-category">
+                    <h3>小学校・中学校 (${schools.length}校)</h3>
+                    <div class="sitemap-links">
+                        ${schools.map(school => 
+                          `<a href="school/${encodeURIComponent(school)}/" class="sitemap-link">${school}</a>`
+                        ).join('')}
+                    </div>
+                </div>
+                
+                <div class="sitemap-category">
+                    <h3>エリア・町名 (${areas.length}件)</h3>
+                    <div class="sitemap-links">
+                        ${areas.map(area => 
+                          `<a href="area/${encodeURIComponent(area)}/" class="sitemap-link">${area}</a>`
+                        ).join('')}
+                    </div>
+                </div>
+            </div>
+        </main>
+    `);
+  
+  // sitemapディレクトリ作成
+  const sitemapDir = path.join(distPath, 'sitemap');
+  fs.mkdirSync(sitemapDir, { recursive: true });
+  
+  fs.writeFileSync(path.join(sitemapDir, 'index.html'), sitemapHtml);
+  console.log('✅ Sitemap page generated');
 }
 
 // sitemapも更新
@@ -107,6 +150,12 @@ function generateSitemap() {
         <lastmod>${today}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>${hostname}/sitemap/</loc>
+        <lastmod>${today}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>`;
   
   // 学校ページ
