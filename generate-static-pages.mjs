@@ -106,7 +106,6 @@ function generateSitemapPage(schools, areas, distPath, indexHtml) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>サイトマップ - 福岡市学校区域検索</title>
     <meta name="description" content="福岡市の全小学校・中学校・エリアのリンク集">
-    <link rel="stylesheet" href="../assets/main-KEOfxeCs.css">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
