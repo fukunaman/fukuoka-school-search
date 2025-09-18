@@ -71,7 +71,7 @@ function handleSearchParams(): void {
   // 静的ページからのプリロードデータをチェック
   const preloadedSchool = (window as any).__PRELOADED_SCHOOL__;
   const preloadedArea = (window as any).__PRELOADED_AREA__;
-  
+
   const urlParams = new URLSearchParams(window.location.search);
   const searchTerm = preloadedArea || urlParams.get('q');
   const schoolSearchTerm = preloadedSchool || urlParams.get('school');

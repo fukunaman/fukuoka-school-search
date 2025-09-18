@@ -32,12 +32,28 @@ function parseCSV() {
   });
   
   // ふりがなCSVを読み込んでソート
-  const kanaPath = path.join(__dirname, 'data', 'kana.csv');
-  const kanaContent = fs.readFileSync(kanaPath, 'utf-8');
-  const kanaLines = kanaContent.split('\n').slice(1);
+  const areaKanaPath = path.join(__dirname, 'data', 'kana.csv');
+  const areaKanaContent = fs.readFileSync(areaKanaPath, 'utf-8');
+  const areaKanaLines = areaKanaContent.split('\n').slice(1);
+  
+  const schoolKanaPath = path.join(__dirname, 'data', 'high_school_kana.csv');
+  const schoolKanaContent = fs.readFileSync(schoolKanaPath, 'utf-8');
+  const schoolKanaLines = schoolKanaContent.split('\n');
   
   const kanaMap = new Map();
-  kanaLines.forEach(line => {
+  
+  // エリアのふりがなを追加
+  areaKanaLines.forEach(line => {
+    if (line.trim()) {
+      const [name, kana] = line.split(',');
+      if (name && kana) {
+        kanaMap.set(name, kana);
+      }
+    }
+  });
+  
+  // 学校のふりがなを追加
+  schoolKanaLines.forEach(line => {
     if (line.trim()) {
       const [name, kana] = line.split(',');
       if (name && kana) {
@@ -51,6 +67,12 @@ function parseCSV() {
     return arr.sort((a, b) => {
       const kanaA = kanaMap.get(a) || a;
       const kanaB = kanaMap.get(b) || b;
+      
+      // デバッグ用ログ（愛宕関連のみ）
+      if (a.includes('愛宕') || b.includes('愛宕')) {
+        console.log(`比較: ${a}(${kanaA}) vs ${b}(${kanaB}) = ${kanaA.localeCompare(kanaB, 'ja')}`);
+      }
+      
       return kanaA.localeCompare(kanaB, 'ja');
     });
   }
