@@ -98,36 +98,83 @@ function generateStaticPages() {
 }
 
 function generateSitemapPage(schools, areas, distPath, indexHtml) {
-  const sitemapHtml = indexHtml
-    .replace('<title>福岡市 小学校・中学校校区・高校学区検索 | 住所から校区・学区を検索</title>', 
-             'サイトマップ - 福岡市学校区域検索')
-    .replace(/src="\/fukuoka-school-search\//g, 'src="../')
-    .replace(/href="\/fukuoka-school-search\//g, 'href="../')
-    .replace(/<main>[\s\S]*?<\/main>/, `
-        <main>
-            <div class="sitemap-section">
-                <h2>サイトマップ</h2>
-                
-                <div class="sitemap-category">
-                    <h3>小学校・中学校 (${schools.length}校)</h3>
-                    <div class="sitemap-links">
-                        ${schools.map(school => 
-                          `<a href="school/${encodeURIComponent(school)}/" class="sitemap-link">${school}</a>`
-                        ).join('')}
-                    </div>
-                </div>
-                
-                <div class="sitemap-category">
-                    <h3>エリア・町名 (${areas.length}件)</h3>
-                    <div class="sitemap-links">
-                        ${areas.map(area => 
-                          `<a href="area/${encodeURIComponent(area)}/" class="sitemap-link">${area}</a>`
-                        ).join('')}
-                    </div>
+  // シンプルなHTMLテンプレート
+  const sitemapHtml = `<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サイトマップ - 福岡市学校区域検索</title>
+    <meta name="description" content="福岡市の全小学校・中学校・エリアのリンク集">
+    <link rel="stylesheet" href="../assets/main-KEOfxeCs.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .sitemap-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .sitemap-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        }
+        .sitemap-header h1 {
+            margin: 0 0 10px 0;
+            color: #1f2937;
+            font-size: 2rem;
+        }
+        .sitemap-header p {
+            margin: 5px 0;
+            color: #6b7280;
+        }
+        .sitemap-header a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .sitemap-header a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="sitemap-container">
+        <div class="sitemap-header">
+            <h1>福岡市 学校区域検索 サイトマップ</h1>
+            <p>全${schools.length}校・${areas.length}エリアのリンク集</p>
+            <p><a href="../">← 検索画面に戻る</a></p>
+        </div>
+        
+        <div class="sitemap-section">
+            <div class="sitemap-category">
+                <h3>小学校・中学校 (${schools.length}校)</h3>
+                <div class="sitemap-links">
+                    ${schools.map(school => 
+                      `<a href="../school/${encodeURIComponent(school)}/" class="sitemap-link">${school}</a>`
+                    ).join('')}
                 </div>
             </div>
-        </main>
-    `);
+            
+            <div class="sitemap-category">
+                <h3>エリア・町名 (${areas.length}件)</h3>
+                <div class="sitemap-links">
+                    ${areas.map(area => 
+                      `<a href="../area/${encodeURIComponent(area)}/" class="sitemap-link">${area}</a>`
+                    ).join('')}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>`;
   
   // sitemapディレクトリ作成
   const sitemapDir = path.join(distPath, 'sitemap');
