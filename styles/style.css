@@ -487,30 +487,38 @@ footer {
 
 .sitemap-links {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-    line-height: 1.6;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+    padding: 15px;
+    line-height: 1.8;
 }
 
 .sitemap-link {
-    display: inline-block;
-    padding: 8px 12px;
+    display: block;
+    padding: 12px 15px;
     color: #374151;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: all 0.2s ease;
     font-weight: 500;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e5e7eb;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .sitemap-link:hover,
 .sitemap-link:focus {
-    background-color: rgba(59, 130, 246, 0.1);
-    color: #1f2937;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+    color: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
     text-decoration: none;
+    border-color: rgba(59, 130, 246, 0.4);
 }
 
 @media (max-width: 768px) {

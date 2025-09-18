@@ -60,7 +60,9 @@ function generateStaticPages() {
     // メタタグとスクリプトを追加
     const schoolHtml = indexHtml
       .replace('<title>福岡市 小学校・中学校校区・高校学区検索 | 住所から校区・学区を検索</title>', 
-               `<title>${school} - 福岡市学校区域検索</title>`)
+               `<title>${school}の校区・通学区域 | 福岡市学校区域検索</title>`)
+      .replace('<meta name="description" content="福岡市の住所から通学する小学校・中学校・高校学区を簡単検索。百道浜小、照葉小、西新小など市内全ての学校に対応。天神・博多・百道浜・照葉など585件の詳細区域データで番地レベルまで正確判定。">', 
+               `<meta name="description" content="${school}の通学区域・校区情報。福岡市の${school}に通う地域・住所一覧。転校・引越し・入学準備の参考情報。">`)
       .replace(/src="\/fukuoka-school-search\//g, 'src="../../')
       .replace(/href="\/fukuoka-school-search\//g, 'href="../../')
       .replace('</head>', `
@@ -79,7 +81,9 @@ function generateStaticPages() {
     
     const areaHtml = indexHtml
       .replace('<title>福岡市 小学校・中学校校区・高校学区検索 | 住所から校区・学区を検索</title>', 
-               `<title>${area} - 福岡市学校区域検索</title>`)
+               `<title>${area}の小学校・中学校 | 福岡市学校区域検索</title>`)
+      .replace('<meta name="description" content="福岡市の住所から通学する小学校・中学校・高校学区を簡単検索。百道浜小、照葉小、西新小など市内全ての学校に対応。天神・博多・百道浜・照葉など585件の詳細区域データで番地レベルまで正確判定。">', 
+               `<meta name="description" content="福岡市${area}の小学校・中学校情報。${area}から通う学校と校区・学区情報。引越し・転校の参考に。">`)
       .replace(/src="\/fukuoka-school-search\//g, 'src="../../')
       .replace(/href="\/fukuoka-school-search\//g, 'href="../../')
       .replace('</head>', `
@@ -104,8 +108,10 @@ function generateSitemapPage(schools, areas, distPath, indexHtml) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>サイトマップ - 福岡市学校区域検索</title>
-    <meta name="description" content="福岡市の全小学校・中学校・エリアのリンク集">
+    <title>サイトマップ | 福岡市小学校・中学校・エリア一覧 - 福岡市学校区域検索</title>
+    <meta name="description" content="福岡市の小学校146校、中学校69校、全394エリアの完全リンク集。百道浜小、照葉小、舞鶴小など市内全学校と天神、博多、百道浜など全地域を網羅。">
+    <meta name="keywords" content="福岡市,小学校,中学校,一覧,学校リスト,校区,学区,サイトマップ">
+    <link rel="canonical" href="https://fukunaman.github.io/fukuoka-school-search/sitemap/">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -142,6 +148,76 @@ function generateSitemapPage(schools, areas, distPath, indexHtml) {
         .sitemap-header a:hover {
             text-decoration: underline;
         }
+        .sitemap-section {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .sitemap-category {
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .sitemap-category h3 {
+            font-size: 1.5rem;
+            color: #374151;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+        .sitemap-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 10px;
+            padding: 15px;
+            line-height: 1.8;
+        }
+        .sitemap-link {
+            display: block;
+            padding: 12px 15px;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #e5e7eb;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .sitemap-link:hover,
+        .sitemap-link:focus {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+            color: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+            text-decoration: none;
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        @media (max-width: 768px) {
+            .sitemap-links {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 8px;
+                padding: 10px;
+            }
+            
+            .sitemap-link {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .sitemap-category {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -151,6 +227,17 @@ function generateSitemapPage(schools, areas, distPath, indexHtml) {
             <p>全${schools.length}校・${areas.length}エリアのリンク集</p>
             <p><a href="../">← 検索画面に戻る</a></p>
         </div>
+        
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "福岡市学校・エリア一覧",
+          "description": "福岡市の全小学校・中学校とエリアのリンク集",
+          "numberOfItems": ${schools.length + areas.length},
+          "url": "https://fukunaman.github.io/fukuoka-school-search/sitemap/"
+        }
+        </script>
         
         <div class="sitemap-section">
             <div class="sitemap-category">
