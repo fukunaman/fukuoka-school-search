@@ -67,12 +67,6 @@ function parseCSV() {
     return arr.sort((a, b) => {
       const kanaA = kanaMap.get(a) || a;
       const kanaB = kanaMap.get(b) || b;
-      
-      // デバッグ用ログ（愛宕関連のみ）
-      if (a.includes('愛宕') || b.includes('愛宕')) {
-        console.log(`比較: ${a}(${kanaA}) vs ${b}(${kanaB}) = ${kanaA.localeCompare(kanaB, 'ja')}`);
-      }
-      
       return kanaA.localeCompare(kanaB, 'ja');
     });
   }
