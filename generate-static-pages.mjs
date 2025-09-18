@@ -31,9 +31,33 @@ function parseCSV() {
     }
   });
   
+  // ふりがなCSVを読み込んでソート
+  const kanaPath = path.join(__dirname, 'data', 'kana.csv');
+  const kanaContent = fs.readFileSync(kanaPath, 'utf-8');
+  const kanaLines = kanaContent.split('\n').slice(1);
+  
+  const kanaMap = new Map();
+  kanaLines.forEach(line => {
+    if (line.trim()) {
+      const [name, kana] = line.split(',');
+      if (name && kana) {
+        kanaMap.set(name, kana);
+      }
+    }
+  });
+  
+  // あいうえお順ソート関数
+  function sortByKana(arr) {
+    return arr.sort((a, b) => {
+      const kanaA = kanaMap.get(a) || a;
+      const kanaB = kanaMap.get(b) || b;
+      return kanaA.localeCompare(kanaB, 'ja');
+    });
+  }
+  
   return {
-    schools: Array.from(schools).sort(),
-    areas: Array.from(areas).sort()
+    schools: sortByKana(Array.from(schools)),
+    areas: sortByKana(Array.from(areas))
   };
 }
 
@@ -109,8 +133,7 @@ function generateSitemapPage(schools, areas, distPath, indexHtml) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>サイトマップ | 福岡市小学校・中学校・エリア一覧 - 福岡市学校区域検索</title>
-    <meta name="description" content="福岡市の小学校146校、中学校69校、全394エリアの完全リンク集。百道浜小、照葉小、舞鶴小など市内全学校と天神、博多、百道浜など全地域を網羅。">
-    <meta name="keywords" content="福岡市,小学校,中学校,一覧,学校リスト,校区,学区,サイトマップ">
+    <meta name="description" content="福岡市中央区、福岡市早良区、福岡市東区、福岡市西区、福岡市南区、福岡市博多区、福岡市城南区の小学校146校、中学校69校、全394エリアの完全リンク集。百道浜小、照葉小、舞鶴小など市内全学校と天神、博多、百道浜など全地域を網羅。">
     <link rel="canonical" href="https://fukunaman.github.io/fukuoka-school-search/sitemap/">
     <style>
         body {
@@ -224,7 +247,8 @@ function generateSitemapPage(schools, areas, distPath, indexHtml) {
     <div class="sitemap-container">
         <div class="sitemap-header">
             <h1>福岡市 学校区域検索 サイトマップ</h1>
-            <p>全${schools.length}校・${areas.length}エリアのリンク集</p>
+            <p>福岡市中央区・早良区・東区・西区・南区・博多区・城南区の全7区対応</p>
+            <p>小学校・中学校 全${schools.length}校、エリア ${areas.length}件の完全リンク集</p>
             <p><a href="../">← 検索画面に戻る</a></p>
         </div>
         
@@ -233,7 +257,7 @@ function generateSitemapPage(schools, areas, distPath, indexHtml) {
           "@context": "https://schema.org",
           "@type": "ItemList",
           "name": "福岡市学校・エリア一覧",
-          "description": "福岡市の全小学校・中学校とエリアのリンク集",
+          "description": "福岡市中央区、福岡市早良区、福岡市東区、福岡市西区、福岡市南区、福岡市博多区、福岡市城南区の全7区を網羅した小学校・中学校とエリアのリンク集",
           "numberOfItems": ${schools.length + areas.length},
           "url": "https://fukunaman.github.io/fukuoka-school-search/sitemap/"
         }
