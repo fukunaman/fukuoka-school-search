@@ -20,6 +20,8 @@
 pnpm install
 pnpm run dev       # 開発サーバー
 pnpm run build     # ビルド
+pnpm run typecheck # typecheck
+pnpm run lint      # lint
 pnpm run test:run  # テスト
 ```
 

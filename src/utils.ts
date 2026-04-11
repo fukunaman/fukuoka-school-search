@@ -66,17 +66,17 @@ export class DOMUtils {
   private static createDistrictHTML(district: string, note?: string): string {
     let html = '';
     switch (district) {
-    case '第４学区':
-      html = '第<span class="district-4">４</span>学区';
-      break;
-    case '第５学区':
-      html = '第<span class="district-5">５</span>学区';
-      break;
-    case '第６学区':
-      html = '第<span class="district-6">６</span>学区';
-      break;
-    default:
-      html = this.escapeHtml(district);
+      case '第４学区':
+        html = '第<span class="district-4">４</span>学区';
+        break;
+      case '第５学区':
+        html = '第<span class="district-5">５</span>学区';
+        break;
+      case '第６学区':
+        html = '第<span class="district-6">６</span>学区';
+        break;
+      default:
+        html = this.escapeHtml(district);
     }
 
     if (note) {
@@ -185,15 +185,25 @@ export class SearchUtils {
 
         let score = 0;
         // スコアリング
-        if (normalizedText === normalizedQuery || normalizedReading === hiraganaQuery || normalizedReading === normalizedQuery) {
+        if (
+          normalizedText === normalizedQuery ||
+          normalizedReading === hiraganaQuery ||
+          normalizedReading === normalizedQuery
+        ) {
           score = 100; // 完全一致
         } else if (normalizedText.startsWith(normalizedQuery)) {
           score = 80; // 名称が前方一致
-        } else if (normalizedReading.startsWith(hiraganaQuery) || normalizedReading.startsWith(normalizedQuery)) {
+        } else if (
+          normalizedReading.startsWith(hiraganaQuery) ||
+          normalizedReading.startsWith(normalizedQuery)
+        ) {
           score = 70; // 読みが前方一致
         } else if (normalizedText.includes(normalizedQuery)) {
           score = 50; // 名称が部分一致
-        } else if (normalizedReading.includes(hiraganaQuery) || normalizedReading.includes(normalizedQuery)) {
+        } else if (
+          normalizedReading.includes(hiraganaQuery) ||
+          normalizedReading.includes(normalizedQuery)
+        ) {
           score = 40; // 読みが部分一致
         }
 
