@@ -182,23 +182,23 @@ export const schoolData: SchoolData = {
     "春吉": {
       "1丁目～3丁目": {
         "elementary": "春吉小",
-        "middle": "玉川小校"
+        "middle": "春吉中"
       }
     },
     "清川": {
       "1丁目、2丁目1番～16番、19番、21番(1号～15号、26号～30号)、3丁目1番～5番、21番～24番、28番～33番": {
         "elementary": "春吉小",
-        "middle": "玉川小校"
+        "middle": "春吉中"
       },
       "2丁目17番、18番、20番、21番(16号～25号)、22番、3丁目6番～20番、25番～27番": {
         "elementary": "高宮小",
-        "middle": "西高宮小校"
+        "middle": "高宮中"
       }
     },
     "渡辺通": {
       "1丁目、3丁目、5丁目1番～16番、25番、26番": {
         "elementary": "春吉小",
-        "middle": "玉川小校"
+        "middle": "春吉中"
       },
       "2丁目、4丁目、5丁目20番～24番": {
         "elementary": "警固小",
@@ -208,11 +208,11 @@ export const schoolData: SchoolData = {
     "高砂": {
       "1丁目1番～11番、17番～24番": {
         "elementary": "春吉小",
-        "middle": "玉川小校"
+        "middle": "春吉中"
       },
       "1丁目12番～16番、2丁目": {
         "elementary": "高宮小",
-        "middle": "西高宮小校"
+        "middle": "高宮中"
       }
     },
     "福浜": {
@@ -346,13 +346,13 @@ export const schoolData: SchoolData = {
     "大宮": {
       "1丁目、2丁目": {
         "elementary": "高宮小",
-        "middle": "西高宮小校"
+        "middle": "高宮中"
       }
     },
     "那の川": {
       "2丁目5番～11番(1番～4番は南区)": {
         "elementary": "高宮小",
-        "middle": "西高宮小校"
+        "middle": "高宮中"
       }
     },
     "白金": {
@@ -3167,86 +3167,245 @@ export const schoolData: SchoolData = {
 };
 
 export const highSchoolData: HighSchoolData = {
-  "博多区:千代中": "第４学区",
-  "博多区:吉塚中": "第４学区",
-  "博多区:博多中": "第４学区",
-  "東区:青葉中": "第４学区",
-  "東区:香椎第２中": "第４学区",
-  "東区:香椎第３中": "第４学区",
-  "東区:城香中": "第４学区",
-  "東区:志賀中": "第４学区",
-  "東区:香椎第１中": "第４学区",
-  "東区:多々良中央中": "第４学区",
-  "東区:照葉中": "第４学区",
-  "東区:松崎中": "第４学区",
-  "東区:和白中": "第４学区",
-  "東区:箱崎中": "第４学区",
-  "東区:箱崎清松中": "第４学区",
-  "東区:福岡中": "第４学区",
-  "東区:多々良中": "第４学区",
-  "東区:和白丘中": "第４学区",
-  "南区:春吉中": "第５学区",
-  "南区:高宮中": "第５学区",
-  "南区:三宅中": "第５学区",
-  "南区:筑紫丘中": "第５学区",
-  "南区:曰佐中": "第５学区",
-  "南区:老司中": "第５学区",
-  "南区:宮竹中": "第５学区",
-  "南区:横手中": "第５学区",
-  "南区:野間中": "第５学区",
-  "博多区:宮竹中": "第５学区",
-  "博多区:東光中": "第５学区",
-  "博多区:東住吉中": "第５学区",
-  "博多区:住吉中": "第５学区",
-  "博多区:板付中": "第５学区",
-  "博多区:三筑中": "第５学区",
-  "博多区:那珂中": "第５学区",
-  "博多区:席田中": "第５学区",
-  "中央区:平尾中": "第５学区",
-  "中央区:春吉中": "第５学区",
-  "中央区:高宮中": "第５学区",
-  "南区:花畑中": "第５学区",
-  "南区:柏原中": "第５学区",
-  "南区:長丘中": "第６学区",
-  "中央区:舞鶴中": "第６学区",
-  "中央区:警固中": "第６学区",
-  "中央区:当仁中": "第６学区",
-  "中央区:城西中": "第６学区",
-  "中央区:友泉中": "第６学区",
-  "早良区:西福岡中": "第６学区",
-  "早良区:次郎丸中": "第６学区",
-  "早良区:原中": "第６学区",
-  "早良区:金武中": "第６学区",
-  "早良区:早良中": "第６学区",
-  "早良区:原中央中": "第６学区",
-  "早良区:原北中": "第６学区",
-  "早良区:高取中": "第６学区",
-  "早良区:田隈中": "第６学区",
-  "早良区:梅林中": "第６学区",
-  "早良区:百道中": "第６学区",
-  "城南区:片江中": "第６学区",
-  "城南区:梅林中": "第６学区",
-  "城南区:友泉中": "第６学区",
-  "城南区:城南中": "第６学区",
-  "城南区:長尾中": "第６学区",
-  "城南区:城西中": "第６学区",
-  "西区:姪浜中": "第６学区",
-  "西区:壱岐中": "第６学区",
-  "西区:壱岐丘中": "第６学区",
-  "西区:下山門中": "第６学区",
-  "西区:玄洋中": "第６学区",
-  "西区:内浜中": "第６学区",
-  "西区:小呂中": "第６学区",
-  "西区:金武中": "第６学区",
-  "西区:北崎中": "第６学区",
-  "西区:玄界中": "第６学区",
-  "西区:元岡中": "第６学区",
-  "西区:西陵中": "第６学区",
-  "西区:能古中": "第６学区",
-  "西区:周船寺中": "第６学区"
+  "東区:香椎第１中": {
+    "district": "第４学区"
+  },
+  "東区:香椎第２中": {
+    "district": "第４学区"
+  },
+  "東区:香椎第３中": {
+    "district": "第４学区"
+  },
+  "東区:志賀中": {
+    "district": "第４学区"
+  },
+  "東区:松崎中": {
+    "district": "第４学区"
+  },
+  "東区:照葉中": {
+    "district": "第４学区"
+  },
+  "東区:城香中": {
+    "district": "第４学区"
+  },
+  "東区:青葉中": {
+    "district": "第４学区"
+  },
+  "東区:多々良中": {
+    "district": "第４学区"
+  },
+  "東区:多々良中央中": {
+    "district": "第４学区"
+  },
+  "東区:箱崎清松中": {
+    "district": "第４学区"
+  },
+  "東区:箱崎中": {
+    "district": "第４学区"
+  },
+  "東区:福岡中": {
+    "district": "第４学区"
+  },
+  "東区:和白丘中": {
+    "district": "第４学区"
+  },
+  "東区:和白中": {
+    "district": "第４学区"
+  },
+  "博多区:吉塚中": {
+    "district": "第４学区"
+  },
+  "博多区:千代中": {
+    "district": "第４学区"
+  },
+  "博多区:博多中": {
+    "district": "第４学区"
+  },
+  "中央区:高宮中": {
+    "district": "第５学区"
+  },
+  "中央区:春吉中": {
+    "district": "第５学区"
+  },
+  "中央区:平尾中": {
+    "district": "第５学区"
+  },
+  "南区:横手中": {
+    "district": "第５学区"
+  },
+  "南区:花畑中": {
+    "district": "第５学区",
+    "note": "※花畑中校区のうち福岡市南区野多目五丁目２番３１号の地域及び野多目西公園は除く"
+  },
+  "南区:宮竹中": {
+    "district": "第５学区"
+  },
+  "南区:高宮中": {
+    "district": "第５学区"
+  },
+  "南区:三宅中": {
+    "district": "第５学区"
+  },
+  "南区:春吉中": {
+    "district": "第５学区"
+  },
+  "南区:筑紫丘中": {
+    "district": "第５学区"
+  },
+  "南区:長丘中": {
+    "district": "第６学区",
+    "note": "※第５学区の地域と６学区の地域がある"
+  },
+  "南区:柏原中": {
+    "district": "第５学区"
+  },
+  "南区:野間中": {
+    "district": "第５学区"
+  },
+  "南区:老司中": {
+    "district": "第５学区"
+  },
+  "南区:曰佐中": {
+    "district": "第５学区"
+  },
+  "博多区:宮竹中": {
+    "district": "第５学区"
+  },
+  "博多区:三筑中": {
+    "district": "第５学区"
+  },
+  "博多区:住吉中": {
+    "district": "第５学区"
+  },
+  "博多区:席田中": {
+    "district": "第５学区"
+  },
+  "博多区:東光中": {
+    "district": "第５学区"
+  },
+  "博多区:東住吉中": {
+    "district": "第５学区"
+  },
+  "博多区:那珂中": {
+    "district": "第５学区"
+  },
+  "博多区:板付中": {
+    "district": "第５学区"
+  },
+  "城南区:城西中": {
+    "district": "第６学区"
+  },
+  "城南区:城南中": {
+    "district": "第６学区"
+  },
+  "城南区:長尾中": {
+    "district": "第６学区"
+  },
+  "城南区:梅林中": {
+    "district": "第６学区"
+  },
+  "城南区:片江中": {
+    "district": "第６学区"
+  },
+  "城南区:友泉中": {
+    "district": "第６学区"
+  },
+  "西区:壱岐丘中": {
+    "district": "第６学区"
+  },
+  "西区:壱岐中": {
+    "district": "第６学区"
+  },
+  "西区:下山門中": {
+    "district": "第６学区"
+  },
+  "西区:金武中": {
+    "district": "第６学区"
+  },
+  "西区:元岡中": {
+    "district": "第６学区"
+  },
+  "西区:玄界中": {
+    "district": "第６学区"
+  },
+  "西区:玄洋中": {
+    "district": "第６学区"
+  },
+  "西区:周船寺中": {
+    "district": "第６学区"
+  },
+  "西区:小呂中": {
+    "district": "第６学区"
+  },
+  "西区:西陵中": {
+    "district": "第６学区"
+  },
+  "西区:内浜中": {
+    "district": "第６学区"
+  },
+  "西区:能古中": {
+    "district": "第６学区"
+  },
+  "西区:北崎中": {
+    "district": "第６学区"
+  },
+  "西区:姪浜中": {
+    "district": "第６学区"
+  },
+  "早良区:金武中": {
+    "district": "第６学区"
+  },
+  "早良区:原中": {
+    "district": "第６学区"
+  },
+  "早良区:原中央中": {
+    "district": "第６学区"
+  },
+  "早良区:原北中": {
+    "district": "第６学区"
+  },
+  "早良区:高取中": {
+    "district": "第６学区"
+  },
+  "早良区:次郎丸中": {
+    "district": "第６学区"
+  },
+  "早良区:西福岡中": {
+    "district": "第６学区"
+  },
+  "早良区:早良中": {
+    "district": "第６学区"
+  },
+  "早良区:田隈中": {
+    "district": "第６学区"
+  },
+  "早良区:梅林中": {
+    "district": "第６学区"
+  },
+  "早良区:百道中": {
+    "district": "第６学区"
+  },
+  "中央区:警固中": {
+    "district": "第６学区"
+  },
+  "中央区:城西中": {
+    "district": "第６学区"
+  },
+  "中央区:当仁中": {
+    "district": "第６学区"
+  },
+  "中央区:舞鶴中": {
+    "district": "第６学区"
+  },
+  "中央区:友泉中": {
+    "district": "第６学区"
+  },
+  "南区:長尾中": {
+    "district": "第６学区"
+  }
 };
 
-export function getHighSchoolDistrict(ward: string, middleSchool: string): string | undefined {
+export function getHighSchoolInfo(ward: string, middleSchool: string) {
   return highSchoolData[`${ward}:${middleSchool}`];
 }
 
@@ -3286,30 +3445,34 @@ export function getChomeList(ward: string, town: string): string[] {
   return schoolData[ward] && schoolData[ward][town] ? Object.keys(schoolData[ward][town]) : [];
 }
 
-export function searchSchool(ward: string, town: string, chome: string): SearchResult | undefined {
+export function searchSchool(ward: string, town: string, chome: string): SearchResult | null {
   if (schoolData[ward] && schoolData[ward][town] && schoolData[ward][town][chome]) {
     const info = schoolData[ward][town][chome];
+    const hsInfo = getHighSchoolInfo(ward, info.middle);
     return {
       elementary: info.elementary,
       middle: info.middle,
       note: info.note,
-      highSchoolDistrict: getHighSchoolDistrict(ward, info.middle)
+      highSchoolDistrict: hsInfo?.district,
+      highSchoolNote: hsInfo?.note
     };
   }
-  return undefined;
+  return null;
 }
 
 export function searchTownAreas(ward: string, town: string): AreaData[] {
   if (!schoolData[ward] || !schoolData[ward][town]) return [];
   return Object.keys(schoolData[ward][town]).map(chome => {
     const info = schoolData[ward][town][chome];
+    const hsInfo = getHighSchoolInfo(ward, info.middle);
     return {
       ward,
       town,
       chome,
       elementary: info.elementary,
       middle: info.middle,
-      highSchoolDistrict: getHighSchoolDistrict(ward, info.middle)
+      highSchoolDistrict: hsInfo?.district,
+      highSchoolNote: hsInfo?.note
     };
   });
 }
@@ -3321,13 +3484,15 @@ export function searchSchoolAreas(schoolName: string): AreaData[] {
       Object.keys(schoolData[ward][town]).forEach((chome) => {
         const info = schoolData[ward][town][chome];
         if (info.elementary === schoolName || info.middle === schoolName) {
+          const hsInfo = getHighSchoolInfo(ward, info.middle);
           areas.push({
             ward,
             town,
             chome,
             elementary: info.elementary,
             middle: info.middle,
-            highSchoolDistrict: getHighSchoolDistrict(ward, info.middle)
+            highSchoolDistrict: hsInfo?.district,
+            highSchoolNote: hsInfo?.note
           });
         }
       });

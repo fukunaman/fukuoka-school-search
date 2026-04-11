@@ -31,6 +31,10 @@ export class ResultsManager {
     elements.middleResult.innerHTML = DOMUtils.createSchoolCell(result.middle);
     elements.highSchoolResult.textContent =
       result.highSchoolDistrict || APP_CONFIG.defaultHighSchoolDistrict;
+    
+    if (result.highSchoolNote) {
+      elements.highSchoolResult.innerHTML += `<div class="high-school-note">${result.highSchoolNote}</div>`;
+    }
 
     if (result.note) {
       elements.noteResult.textContent = result.note;

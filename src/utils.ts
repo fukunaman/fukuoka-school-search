@@ -57,23 +57,32 @@ export class DOMUtils {
             <td>${this.escapeHtml(area.chome)}</td>
             <td>${this.createSchoolCell(area.elementary)}</td>
             <td>${this.createSchoolCell(area.middle)}</td>
-            <td>${this.createDistrictHTML(highSchoolDistrict)}</td>
+            <td>${this.createDistrictHTML(highSchoolDistrict, area.highSchoolNote)}</td>
         </tr>`;
   }
   /**
    * 高校学区の表示HTMLを作成
    */
-  private static createDistrictHTML(district: string): string {
+  private static createDistrictHTML(district: string, note?: string): string {
+    let html = '';
     switch (district) {
     case '第４学区':
-      return '第<span class="district-4">４</span>学区';
+      html = '第<span class="district-4">４</span>学区';
+      break;
     case '第５学区':
-      return '第<span class="district-5">５</span>学区';
+      html = '第<span class="district-5">５</span>学区';
+      break;
     case '第６学区':
-      return '第<span class="district-6">６</span>学区';
+      html = '第<span class="district-6">６</span>学区';
+      break;
     default:
-      return this.escapeHtml(district);
+      html = this.escapeHtml(district);
     }
+
+    if (note) {
+      html += `<div class="high-school-note">${this.escapeHtml(note)}</div>`;
+    }
+    return html;
   }
 
   /**
