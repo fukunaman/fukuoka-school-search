@@ -30,7 +30,7 @@ export class StateManager {
       }
       this.state.elements = elements;
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   }
