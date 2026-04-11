@@ -37,7 +37,7 @@ export const HTML_TEMPLATES = {
 } as const;
 // アプリケーション設定定数
 export const APP_CONFIG = {
-  maxSuggestions: 10,
+  maxSuggestions: 20,
   suggestionHideDelay: 200,
   scrollBehavior: 'smooth' as const,
   defaultHighSchoolDistrict: '情報なし',

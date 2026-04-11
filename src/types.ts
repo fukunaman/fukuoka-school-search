@@ -18,10 +18,14 @@ export interface SearchResult {
   elementary: string;
   middle: string;
   highSchoolDistrict?: string;
+  highSchoolNote?: string;
   note?: string;
 }
 export interface HighSchoolData {
-  [key: string]: string; // "区名:中学校名" -> 学区
+  [key: string]: {
+    district: string;
+    note?: string;
+  };
 }
 export interface DOMElements {
   // 住所検索関連
@@ -61,6 +65,7 @@ export interface AreaData {
   elementary: string;
   middle: string;
   highSchoolDistrict?: string;
+  highSchoolNote?: string;
 }
 export interface AppState {
   elements: DOMElements;
