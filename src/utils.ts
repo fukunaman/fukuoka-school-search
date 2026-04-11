@@ -153,6 +153,8 @@ export class NavigationUtils {
     });
   }
 }
+import { townReadings, wardReadings, schoolReadings } from './readings';
+
 /**
  * 検索ユーティリティクラス
  */
@@ -163,9 +165,51 @@ export class SearchUtils {
   static filterItems<T>(items: T[], query: string, getSearchText: (item: T) => string): T[] {
     if (!query.trim()) return [];
     const normalizedQuery = query.toLowerCase().trim();
+    const hiraganaQuery = this.toHiragana(normalizedQuery);
+
     return items
-      .filter((item) => getSearchText(item).toLowerCase().includes(normalizedQuery))
+      .map((item) => {
+        const text = getSearchText(item);
+        const reading = townReadings[text] || wardReadings[text] || schoolReadings[text] || '';
+        const normalizedText = text.toLowerCase();
+        const normalizedReading = reading.toLowerCase();
+
+        let score = 0;
+        // スコアリング
+        if (normalizedText === normalizedQuery || normalizedReading === hiraganaQuery || normalizedReading === normalizedQuery) {
+          score = 100; // 完全一致
+        } else if (normalizedText.startsWith(normalizedQuery)) {
+          score = 80; // 名称が前方一致
+        } else if (normalizedReading.startsWith(hiraganaQuery) || normalizedReading.startsWith(normalizedQuery)) {
+          score = 70; // 読みが前方一致
+        } else if (normalizedText.includes(normalizedQuery)) {
+          score = 50; // 名称が部分一致
+        } else if (normalizedReading.includes(hiraganaQuery) || normalizedReading.includes(normalizedQuery)) {
+          score = 40; // 読みが部分一致
+        }
+
+        return { item, score, text, reading };
+      })
+      .filter((entry) => entry.score > 0)
+      .sort((a, b) => {
+        // 1. スコアが高い順
+        if (b.score !== a.score) return b.score - a.score;
+        // 2. 文字数が短い順（例：原田より原を優先）
+        if (a.text.length !== b.text.length) return a.text.length - b.text.length;
+        // 3. 読みのあいうえお順
+        return a.reading.localeCompare(b.reading, 'ja');
+      })
+      .map((entry) => entry.item)
       .slice(0, APP_CONFIG.maxSuggestions);
+  }
+
+  /**
+   * カタカナをひらがなに変換
+   */
+  private static toHiragana(str: string): string {
+    return str.replace(/[ァ-ン]/g, (s) => {
+      return String.fromCharCode(s.charCodeAt(0) - 0x60);
+    });
   }
 }
 /**
