@@ -118,19 +118,19 @@ export const schoolData: SchoolData = {
     南公園: {
       全域: {
         elementary: '平尾小',
-        middle: '警固中',
+        middle: '平尾中',
       },
     },
     平尾: {
       '1丁目～5丁目': {
         elementary: '平尾小',
-        middle: '警固中',
+        middle: '平尾中',
       },
     },
     薬院: {
       '3丁目、4丁目': {
         elementary: '平尾小',
-        middle: '警固中',
+        middle: '平尾中',
       },
       '1丁目、2丁目': {
         elementary: '警固小',
@@ -162,7 +162,7 @@ export const schoolData: SchoolData = {
       },
       '1丁目': {
         elementary: '舞鶴小',
-        middle: '城西中',
+        middle: '舞鶴中',
       },
     },
     西公園: {
@@ -257,7 +257,7 @@ export const schoolData: SchoolData = {
     大手門: {
       '2丁目～3丁目': {
         elementary: '舞鶴小',
-        middle: '城西中',
+        middle: '舞鶴中',
       },
       '1丁目': {
         elementary: '赤坂小',
@@ -267,13 +267,13 @@ export const schoolData: SchoolData = {
     港: {
       '1丁目～3丁目': {
         elementary: '舞鶴小',
-        middle: '城西中',
+        middle: '舞鶴中',
       },
     },
     荒津: {
       '1丁目、2丁目': {
         elementary: '舞鶴小',
-        middle: '城西中',
+        middle: '舞鶴中',
       },
     },
     大名: {
@@ -461,12 +461,6 @@ export const schoolData: SchoolData = {
         middle: '三宅中',
       },
     },
-    五十川: {
-      '1丁目、2丁目': {
-        elementary: '区は博多区に',
-        middle: '宮竹中',
-      },
-    },
     大橋団地: {
       全域: {
         elementary: '塩原小',
@@ -524,7 +518,7 @@ export const schoolData: SchoolData = {
       },
       '4丁目、5丁目': {
         elementary: '高木小',
-        middle: '横手中',
+        middle: '宮竹中',
       },
     },
     弥永: {
@@ -825,7 +819,7 @@ export const schoolData: SchoolData = {
     折立町: {
       全域: {
         elementary: '高木小',
-        middle: '横手中',
+        middle: '宮竹中',
       },
     },
   },
@@ -895,7 +889,7 @@ export const schoolData: SchoolData = {
       },
       '1丁目1番(1号～18号、85号～99号)、4番': {
         elementary: '吉塚小',
-        middle: '千代中',
+        middle: '吉塚中',
       },
     },
     東公園: {
@@ -1054,7 +1048,7 @@ export const schoolData: SchoolData = {
       '1丁目1番～12番、14番、18番～45番、2丁目5番～21番、3丁目、4丁目1番、2番、12番～16番、5丁目4番、5番、14番～17番':
         {
           elementary: '吉塚小',
-          middle: '千代中',
+          middle: '吉塚中',
         },
       '1丁目13番、15番～17番、2丁目1番～4番、4丁目3番～11番、5丁目1番～3番、6番～13番、6丁目～8丁目':
         {
@@ -1065,13 +1059,19 @@ export const schoolData: SchoolData = {
     大字堅粕: {
       全域: {
         elementary: '吉塚小',
-        middle: '千代中',
+        middle: '吉塚中',
       },
     },
     榎田: {
       '1丁目、2丁目': {
         elementary: '吉塚小',
-        middle: '千代中',
+        middle: '吉塚中',
+      },
+    },
+    五十川: {
+      '1丁目、2丁目': {
+        elementary: '宮竹小',
+        middle: '宮竹中',
       },
     },
     豊: {
@@ -2206,7 +2206,7 @@ export const schoolData: SchoolData = {
       },
       '1丁目、2丁目、3丁目（36番の一部）、4丁目～7丁目': {
         elementary: '美和台小',
-        middle: '志賀中',
+        middle: '和白丘中',
         note: '一部の詳細は、学校計画第1課・第2課に照会のこと',
       },
     },
@@ -2217,7 +2217,7 @@ export const schoolData: SchoolData = {
       },
       '5丁目22番、23番': {
         elementary: '美和台小',
-        middle: '志賀中',
+        middle: '和白丘中',
       },
     },
     大字上和白: {
@@ -2438,7 +2438,7 @@ export const schoolData: SchoolData = {
     美和台新町: {
       全域: {
         elementary: '美和台小',
-        middle: '志賀中',
+        middle: '和白丘中',
       },
     },
     水谷: {
@@ -2655,7 +2655,7 @@ export const schoolData: SchoolData = {
     今宿: {
       '3丁目111番': {
         elementary: '今宿小',
-        middle: '元岡中',
+        middle: '玄洋中',
       },
       '1丁目～3丁目(ただし、3丁目111番を除く･･･今宿小)': {
         elementary: '玄洋小',
@@ -2995,7 +2995,7 @@ export const schoolData: SchoolData = {
       },
       '891(2)': {
         elementary: '壱岐小',
-        middle: '姪浜中',
+        middle: '壱岐中',
       },
     },
     戸切: {
@@ -3025,7 +3025,7 @@ export const schoolData: SchoolData = {
       },
       '1丁目、5丁目1番、2番、3番、8番、6丁目、7丁目': {
         elementary: '壱岐小',
-        middle: '姪浜中',
+        middle: '壱岐中',
       },
     },
     西の丘: {
@@ -3037,13 +3037,13 @@ export const schoolData: SchoolData = {
     拾六町団地: {
       全域: {
         elementary: '壱岐小',
-        middle: '姪浜中',
+        middle: '壱岐中',
       },
     },
     生松台: {
       '1丁目～3丁目': {
         elementary: '壱岐小',
-        middle: '姪浜中',
+        middle: '壱岐中',
       },
     },
     姪浜駅南: {
@@ -3129,7 +3129,7 @@ export const schoolData: SchoolData = {
     福重団地: {
       全域: {
         elementary: '福重小',
-        middle: '姪浜中',
+        middle: '内浜中',
       },
     },
     能古: {

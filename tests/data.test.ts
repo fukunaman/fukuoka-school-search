@@ -16,6 +16,13 @@ describe('学校区域検索機能', () => {
       expect(result?.middle).toBe('舞鶴中')
     })
 
+    it('港1丁目～3丁目の検索で舞鶴小・舞鶴中が返される', () => {
+      const result = searchSchool('中央区', '港', '1丁目～3丁目')
+      expect(result).toBeDefined()
+      expect(result?.elementary).toBe('舞鶴小')
+      expect(result?.middle).toBe('舞鶴中')
+    })
+
     it('存在しない住所の場合はnullを返す', () => {
       const result = searchSchool('存在しない区', '存在しない町', '1丁目')
       expect(result).toBeNull()
